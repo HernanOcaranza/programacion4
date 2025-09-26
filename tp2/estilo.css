@@ -1,0 +1,37 @@
+#formulario{
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    padding: 2em;
+}
+
+.elemForm{
+    margin-bottom: .5em;
+    font-size: 1.1em;
+}
+
+#botonSelect{
+    margin-bottom: 2em;
+}
+
+#tabla td, #tabla th{
+    border: 1px solid black;
+    padding: .5em;
+}
+
+#tabla{
+    border-collapse: collapse;
+}
+
+section{
+}
+
+body{
+    display: flex;
+    justify-content: space-around;
+}
+
+img{
+    width: 3em;
+}

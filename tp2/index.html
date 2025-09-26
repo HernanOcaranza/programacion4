@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <script src="script.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <form id="formulario">
+        <label class="elemForm">Agregar Categoria</label>
+        <input type="text" id="entrada" class="elemForm">
+        <button id="botonSelect" class="elemForm">Agregar</button>
+
+        <label class="elemForm">Agregar producto</label>
+        <input type="text" id="entradaTabla" class="elemForm">
+        <label class="elemForm">Categoria</label>
+        <select id="select" class="elemForm">
+            <option>Galletas</option>
+        </select>
+        <button id="botonTabla" class="elemForm">Agregar</button>
+    </form>
+    <section>
+        <table id="tabla">
+            <thead>
+                <th>Nombre</th>
+                <th>Categoria</th>
+                <th><img src="tacho.png" alt="tacho"></th>
+            </thead>
+            <tbody id="tbody">
+                <tr>
+                    <td>Sonrisas</td>
+                    <td>Galletas</td>
+                    <td>
+                        <input type="checkbox" class="check">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="botonEliminar">Eliminar</button>
+    </section>
+</body>
+</html>
