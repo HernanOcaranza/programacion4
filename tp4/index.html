@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Tp4</title>
+  </head>
+  <body>
+    <header>
+      <nav id="menu">
+        <ul>
+          <li class="submenu">Ventas
+            <ul class="dropdown">
+              <li id="nuevaVenta">Nueva venta</li>
+              <li id="historial">Historial</li>
+            </ul>
+          </li>
+          <li class="submenu">Stock
+            <ul class="dropdown">
+              <li id="productos">Productos</li>
+              <li id="ingresarProducto">Ingresar producto</li>
+              <li id="reportesStock">Reportes</li>
+            </ul>
+          </li>
+          <li class="submenu">Caja
+            <ul class="dropdown">
+              <li id="apertura">Apertura</li>
+              <li id="cierre">Cierre</li>
+              <li id="movimientos">Movimientos</li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <form id="formLogin">
+        <label class="itemForm" for="inputUsuario">Usuario</label>
+        <input class="itemForm" type="text" name="usuario" id="inputUsuario" />
+        <label class="itemForm" for="inputPass">Contraseña</label>
+        <input class="itemForm" type="password" name="password" id="inputPass" />
+        <input class="itemForm" type="submit" value="Ingresar" id="inputSubmit" />
+      </form>
+      <p id="mensaje"></p>
+    </main>
+  </body>
+</html>
