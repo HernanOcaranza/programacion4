@@ -4,8 +4,7 @@ let inputUsuario = document.getElementById("inputUsuario")
 let inputPass = document.getElementById("inputPass")
 let main = document.querySelector("main")
 let menu = document.getElementById("menu")
-const submenus = document.querySelectorAll('.submenu');
-
+let submenus = document.querySelectorAll('.submenu');
 
 function login(){
      if (inputUsuario.value === "admin" && inputPass.value === "1234"){        
@@ -37,54 +36,51 @@ submenus.forEach(menu => {
   });
 });
 
-// CREAMOS LAS VARIABLES DE CADA MAIN
-// Ventas
-let mainNuevaVenta = document.createElement("main");
-mainNuevaVenta.innerHTML = "Aquí se realiza una nueva venta.";
+function cargarMainDesdeArchivo(archivo) {
+  fetch(`html/${archivo}.html`)
+    .then(res => {
+      if (!res.ok) throw new Error("Error al cargar " + archivo);
+      return res.text();
+    })
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+      const nuevoMain = doc.querySelector("main");
 
-let mainHistorial = document.createElement("main");
-mainHistorial.innerHTML = "Historial de ventas realizadas.";
-
-// Stock
-let mainProductos = document.createElement("main");
-mainProductos.innerHTML = "Listado de productos disponibles.";
-
-let mainIngresarProducto = document.createElement("main");
-mainIngresarProducto.innerHTML = "Formulario para ingresar un nuevo producto.";
-
-let mainReportesStock = document.createElement("main");
-mainReportesStock.innerHTML = "Reportes de stock.";
-
-// Caja
-let mainApertura = document.createElement("main");
-mainApertura.innerHTML = "Abrir caja del día.";
-
-let mainCierre = document.createElement("main");
-mainCierre.innerHTML = "Cerrar caja del día.";
-
-let mainMovimientos = document.createElement("main");
-mainMovimientos.innerHTML = "Ver movimientos de caja.";
-
-function mostrarMain(main) {
-    // Primero eliminamos cualquier main existente
-    const mainExistente = document.querySelector("main");
-    if(mainExistente) mainExistente.remove();
-  
-    // Insertamos el main que queremos mostrar
-    document.body.appendChild(main);
+      if (nuevoMain) {
+        const mainExistente = document.querySelector("main");
+        if (mainExistente) mainExistente.remove();
+        document.body.appendChild(nuevoMain);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+    });
 }
 
-//EVENTOS PARA MOSTRAR CADA MAIN
 // Ventas
-document.getElementById("nuevaVenta").addEventListener("click", () => mostrarMain(mainNuevaVenta));
-document.getElementById("historial").addEventListener("click", () => mostrarMain(mainHistorial));
+document.getElementById("nuevaVenta")
+  .addEventListener("click", () => cargarMainDesdeArchivo("nuevaVenta"));
+
+document.getElementById("historial")
+  .addEventListener("click", () => cargarMainDesdeArchivo("historial"));
 
 // Stock
-document.getElementById("productos").addEventListener("click", () => mostrarMain(mainProductos));
-document.getElementById("ingresarProducto").addEventListener("click", () => mostrarMain(mainIngresarProducto));
-document.getElementById("reportesStock").addEventListener("click", () => mostrarMain(mainReportesStock));
+document.getElementById("productos")
+  .addEventListener("click", () => cargarMainDesdeArchivo("productos"));
+
+document.getElementById("ingresarProducto")
+  .addEventListener("click", () => cargarMainDesdeArchivo("ingresarProducto"));
+
+document.getElementById("reportesStock")
+  .addEventListener("click", () => cargarMainDesdeArchivo("reportesStock"));
 
 // Caja
-document.getElementById("apertura").addEventListener("click", () => mostrarMain(mainApertura));
-document.getElementById("cierre").addEventListener("click", () => mostrarMain(mainCierre));
-document.getElementById("movimientos").addEventListener("click", () => mostrarMain(mainMovimientos));
+document.getElementById("apertura")
+  .addEventListener("click", () => cargarMainDesdeArchivo("apertura"));
+
+document.getElementById("cierre")
+  .addEventListener("click", () => cargarMainDesdeArchivo("cierre"));
+
+document.getElementById("movimientos")
+  .addEventListener("click", () => cargarMainDesdeArchivo("movimientos"));
