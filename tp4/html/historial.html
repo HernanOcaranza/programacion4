@@ -1,80 +1,8 @@
 <main>
   <h2>Historial de Ventas</h2>
-
-  <!-- Tabla para mostrar las ventas -->
-  <table border="1" id="tablaHistorial">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Producto</th>
-        <th>Cantidad</th>
-        <th>Precio Unitario</th>
-        <th>Total</th>
-        <th>Fecha</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
+  <table border="1" cellpadding="5">
+    <tr><th>Bebida</th><th>Cantidad</th><th>Fecha</th></tr>
+    <tr><td>Cerveza</td><td>5</td><td>27/09/2025</td></tr>
+    <tr><td>Fernet con Coca</td><td>2</td><td>28/09/2025</td></tr>
   </table>
-
-  <!-- Mostrar el total recaudado -->
-  <p id="totalRecaudado"></p>
-
-  <style>
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 15px;
-    }
-    th, td {
-      padding: 8px;
-      text-align: center;
-    }
-    th {
-      background-color: #2196f3;
-      color: white;
-    }
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-    #totalRecaudado {
-      font-weight: bold;
-      margin-top: 15px;
-      font-size: 1.2em;
-      color: #333;
-    }
-  </style>
-
-  <script>
-    // Recuperar ventas guardadas
-    let ventas = JSON.parse(localStorage.getItem("ventas")) || [];
-
-    function mostrarHistorial() {
-      const tbody = document.querySelector("#tablaHistorial tbody");
-      tbody.innerHTML = ""; // limpiar tabla
-
-      let totalGeneral = 0;
-
-      ventas.forEach((venta, index) => {
-        let fila = `
-          <tr>
-            <td>${index + 1}</td>
-            <td>${venta.producto}</td>
-            <td>${venta.cantidad}</td>
-            <td>$${venta.precio}</td>
-            <td>$${venta.total}</td>
-            <td>${venta.fecha}</td>
-          </tr>
-        `;
-        tbody.innerHTML += fila;
-        totalGeneral += venta.total;
-      });
-
-      // Mostrar total recaudado
-      document.getElementById("totalRecaudado").textContent =
-        "💰 Total recaudado: $" + totalGeneral;
-    }
-
-    // Mostrar historial al cargar
-    mostrarHistorial();
-  </script>
 </main>
