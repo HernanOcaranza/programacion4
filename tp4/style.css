@@ -79,7 +79,28 @@
   }
 
 /* en esta seccion pondre el estilo elegido para la apertura */
- 
+ #pag-apertura{
+  background-color: #e3f2fd; /* azul claro */
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centra horizontalmente */
+    align-items: center;     /* centra verticalmente */
+ }
+
+/* en esta seccion pondre el estilo elegido para el cierre */
+
+#pag-cierre{
+  background-color: #45f178; /* azul claro */
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centra horizontalmente */
+    align-items: center;     /* centra verticalmente */
+}
+
 /* estilos para el formulario de productos*/
 #ingProd{
   background-color: rgb(121, 212, 121);
