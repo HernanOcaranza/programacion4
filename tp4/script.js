@@ -9,6 +9,7 @@ let submenus = document.querySelectorAll('.submenu');
 function login(){
      if (inputUsuario.value === "admin" && inputPass.value === "1234"){        
         mostrarMenu()
+        cargarMainDesdeArchivo("historial")
      } else {
         let mensaje = document.getElementById("mensaje")
         mensaje.innerHTML = "Los datos ingresados son incorrectos"
