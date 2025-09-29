@@ -1,3 +1,88 @@
-<main>    
-    Aquí se realiza una nueva venta.    
+<main class="fondo">
+  <h2>Nueva Venta</h2>
+
+  <!-- Formulario para registrar una venta -->
+  <form id="formVenta">
+    <label for="producto">Producto:</label>
+    <input type="text" id="producto" required><br><br>
+
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" id="cantidad" min="1" required><br><br>
+
+    <label for="precio">Precio unitario:</label>
+    <input type="number" id="precio" min="1" required><br><br>
+
+    <button type="submit">Registrar Venta</button>
+  </form>
+
+  <p id="mensajeVenta"></p>
+
+  <h2>Historial de Ventas</h2>
+  <table border="1" id="tablaVentas">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Total</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    // Recuperar ventas guardadas (o crear array vacío si no hay)
+    let ventas = JSON.parse(localStorage.getItem("ventas")) || [];
+
+    // Función para actualizar la tabla del historial
+    function mostrarHistorial() {
+      const tbody = document.querySelector("#tablaVentas tbody");
+      tbody.innerHTML = ""; // Limpia la tabla
+
+      ventas.forEach((venta) => {
+        let fila = `<tr>
+          <td>${venta.producto}</td>
+          <td>${venta.cantidad}</td>
+          <td>$${venta.precio}</td>
+          <td>$${venta.total}</td>
+          <td>${venta.fecha}</td>
+        </tr>`;
+        tbody.innerHTML += fila;
+      });
+    }
+
+    // Escuchar el formulario de nueva venta
+    document.getElementById("formVenta").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let producto = document.getElementById("producto").value;
+      let cantidad = parseInt(document.getElementById("cantidad").value);
+      let precio = parseFloat(document.getElementById("precio").value);
+
+      let venta = {
+        producto,
+        cantidad,
+        precio,
+        total: cantidad * precio,
+        fecha: new Date().toLocaleString()
+      };
+
+      // Guardar venta en array y en localStorage
+      ventas.push(venta);
+      localStorage.setItem("ventas", JSON.stringify(ventas));
+
+      document.getElementById("mensajeVenta").textContent =
+        "✅ Venta registrada: " + producto + " x" + cantidad;
+
+      // Actualizar historial
+      mostrarHistorial();
+
+      // Reset formulario
+      document.getElementById("formVenta").reset();
+    });
+
+    // Mostrar historial al cargar la página
+    mostrarHistorial();
+  </script>
 </main>
