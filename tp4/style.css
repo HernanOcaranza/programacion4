@@ -121,3 +121,88 @@
   background-color: white;
   text-align: center;
 }
+
+/* Pagina nueva venta */
+
+#pag-nuevaventa {
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  max-width: 600px;
+  margin: auto;
+  background-color: coral;
+}
+
+/* Títulos */
+#pag-nuevaventa h2 {
+  margin-bottom: 10px;
+}
+
+/* Formulario */
+#pag-nuevaventa form {
+  margin-bottom: 20px;
+}
+
+#pag-nuevaventa label {
+  display: inline-block;
+  width: 120px;
+}
+
+#pag-nuevaventa input {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+#pag-nuevaventa button {
+  padding: 6px 12px;
+  border: 1px solid #333;
+  background: #eee;
+  cursor: pointer;
+}
+
+
+/* Pagina historial ventas */
+
+#pag-historial {
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  background: #fdfdfd;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#pag-historial h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-size: 1.8em;
+}
+
+#pag-historial table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+#pag-historial th, #pag-historial td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+#pag-historial th {
+  background-color: #3498db;   
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#pag-historial tr:hover 
+{
+  background-color: #d6ecff;   
+  transition: 0.2s ease-in-out;
+} 
