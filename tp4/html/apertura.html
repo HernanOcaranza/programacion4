@@ -1,83 +1,10 @@
-
-<main class="fondo">
+<main>
   <h2>Apertura de Caja</h2>
-
-  <!-- Formulario para ingresar el monto inicial de la caja -->
-  <form id="formApertura">
-    <label for="montoInicial">Monto inicial:</label>
-    <input type="number" id="montoInicial" min="0" required><br><br>
-    <button type="submit">Abrir Caja</button>
+  <form>
+    <label>Monto inicial:</label>
+    <input type="number"><br><br>
+    <button type="button">Abrir Caja</button>
   </form>
-
-  <!-- Aquí se mostrará un mensaje de confirmación -->
-  <p id="mensajeApertura"></p>
-  
-  <style>
-  /* Fondo general de la página */
-  body {
-    background-color: #e3f2fd; /* azul claro */
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center; /* centra horizontalmente */
-    align-items: center;     /* centra verticalmente */
-  }
-
-  /* Contenedor centrado */
-  .contenedor-apertura {
-    background: white;
-    padding: 2em;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
-    width: 300px;
-  }
-
-  /* Input y botón */
-  input, button {
-    padding: 10px;
-    margin: 5px 0;
-    width: 90%;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-
-  button {
-    background: #2196f3;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background: #1976d2;
-  }
-
-  #mensajeApertura {
-    margin-top: 15px;
-    font-weight: bold;
-    color: green;
-  }
-</style>
-
-  <script>
-    // Escuchamos el evento "submit" del formulario de apertura
-    document.getElementById("formApertura").addEventListener("submit", function(e) {
-      e.preventDefault(); // Evita que la página se recargue
-
-      // Obtenemos el valor ingresado en el input de monto inicial
-      let monto = document.getElementById("montoInicial").value;
-
-      // Validamos que el monto sea mayor o igual a 0
-      if (monto >= 0) {
-        // Guardamos el monto en localStorage (simula guardar en BD)
-        localStorage.setItem("montoApertura", monto);
-
-        // Mostramos un mensaje de confirmación en pantalla
-        document.getElementById("mensajeApertura").textContent = 
-          "✅ Caja abierta con $" + monto;
-      }
-    });
-  </script>
 </main>
+
 
