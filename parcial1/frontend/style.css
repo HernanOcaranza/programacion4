@@ -1,0 +1,272 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+/*main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+    height: 90vh;
+}*/
+#formLogin{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin: 0 auto;
+    padding: 1em;
+    background-color: silver;
+    border-radius: 1em;
+}
+.itemForm{
+    margin-bottom: .5em;
+    padding: .5em;
+    font-size: 1.2em;
+}
+
+#mensaje{
+    width: 25%;
+}
+
+#menu {
+    display: none;
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #menu > ul {
+    display: flex;
+    gap: 20px;
+    background-color: #333;
+    padding: 10px;
+  }
+  
+  #menu li {
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  #menu li:hover {
+    background-color: #444;
+  }
+  
+  /* Submenú oculto por defecto */
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #555;
+    min-width: 150px;
+    z-index: 1000;
+  }
+  
+  .dropdown li {
+    color: #fff;
+    padding: 8px 12px;
+  }
+  
+  .dropdown li:hover {
+    background-color: #666;
+  }
+
+/* en esta seccion pondre el estilo elegido para la apertura */
+ #pag-apertura{
+  background-color: #e3f2fd; /* azul claro */
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centra horizontalmente */
+    align-items: center;     /* centra verticalmente */
+ }
+
+/* en esta seccion pondre el estilo elegido para el cierre */
+
+#pag-cierre{
+  background-color: #45f178; /* azul claro */
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centra horizontalmente */
+    align-items: center;     /* centra verticalmente */
+}
+
+/* estilos para el formulario de productos*/
+#ingProd{
+  background-color: rgb(121, 212, 121);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+  align-items: center;
+}
+
+#formIP{
+  display: flex;
+  flex-direction: column;
+}
+
+.espacioForm{
+  margin-bottom: 0.5em;
+}
+
+/*estilo para la pagina productos*/
+
+#listaProd{
+  background-color: rgb(121, 212, 121);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+  align-items: center;
+}
+
+#tablaProd th, #tablaProd td{
+  border: 1px solid black;
+  padding: .2em;
+
+}
+
+#tablaProd{
+  border-collapse: collapse;
+  background-color: white;
+  text-align: center;
+}
+
+/* Pagina nueva venta */
+
+#pag-nuevaventa {
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  max-width: 600px;
+  margin: auto;
+  background-color: coral;
+}
+
+/* Títulos */
+#pag-nuevaventa h2 {
+  margin-bottom: 10px;
+}
+
+/* Formulario */
+#pag-nuevaventa form {
+  margin-bottom: 20px;
+}
+
+#pag-nuevaventa label {
+  display: inline-block;
+  width: 120px;
+}
+
+#pag-nuevaventa input {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+#pag-nuevaventa button {
+  padding: 6px 12px;
+  border: 1px solid #333;
+  background: #eee;
+  cursor: pointer;
+}
+
+
+/* Pagina historial ventas */
+
+#pag-historial {
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  background: #fdfdfd;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#pag-historial h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-size: 1.8em;
+}
+
+#pag-historial table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+#pag-historial th, #pag-historial td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+#pag-historial th {
+  background-color: #3498db;   
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#pag-historial tr:hover 
+{
+  background-color: #d6ecff;   
+  transition: 0.2s ease-in-out;
+} 
+
+/*estilo para la tabla de stock*/
+
+#reportesdestock{
+  background-color: rgb(181, 211, 14);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+  align-items: center;
+}
+
+ #tablareportdestock th, #tablareportdestock td{
+  border: 1px solid black;
+  padding: .2em;
+
+}
+#tabreportdestock{
+  border-collapse: collapse;
+  background-color: rgb(208, 226, 175);
+  text-align: center;
+}
+
+/*estilo para movimiento de caja*/
+#movimientosdecaja{
+  background-color: rgb(211, 165, 14);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+  align-items: center;
+}
+
+ #movdecaja th, #movdecaja td{
+  border: 1px solid black;
+  padding: .2em;
+
+}
+#movdecaja{
+  border-collapse: collapse;
+  background-color: rgb(243, 217, 67);
+  text-align: center;
+}
