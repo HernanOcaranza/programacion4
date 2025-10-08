@@ -65,6 +65,7 @@ app.post('/ventas', async (req, res) => {
         [total, usuario_id]
     )
     res.send(result)
+})
 // endpoint login
 
 app.post('/login', async (req, res) => {

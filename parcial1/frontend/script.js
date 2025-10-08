@@ -1,3 +1,5 @@
+import { login, agregarProducto } from "./request.js"
+
 let formLogin = document.getElementById("formLogin")
 let inputSubmit = document.getElementById("inputSubmit")
 let inputUsuario = document.getElementById("inputUsuario")
@@ -6,25 +8,28 @@ let main = document.querySelector("main")
 let menu = document.getElementById("menu")
 let submenus = document.querySelectorAll('.submenu');
 
-function login(){
-     if (inputUsuario.value === "admin" && inputPass.value === "1234"){        
-        mostrarMenu()
-        cargarMainDesdeArchivo("historial")
-     } else {
-        let mensaje = document.getElementById("mensaje")
-        mensaje.innerHTML = "Los datos ingresados son incorrectos"
-        mensaje.style.color = "red"        
-     }
+async function handleLogin() {
+  const usuario = inputUsuario.value;
+  const password = inputPass.value;
+  const res = await login(usuario, password)
+  if (res.mensaje == undefined) {
+    mostrarMenu()
+    cargarMainDesdeArchivo("historial")
+  } else {
+    let mensaje = document.getElementById("mensaje")
+    mensaje.innerHTML = "Los datos ingresados son incorrectos"
+    mensaje.style.color = "red"
+  }
 }
 
-function mostrarMenu(){
-    main.style.display = "none";
-    menu.style.display = "block";
+function mostrarMenu() {
+  main.style.display = "none";
+  menu.style.display = "block";
 }
 
-formLogin.addEventListener("submit", (e) =>{
-    e.preventDefault()
-    login()
+formLogin.addEventListener("submit", async (e) => {
+  e.preventDefault()
+  await handleLogin()
 })
 
 submenus.forEach(menu => {
