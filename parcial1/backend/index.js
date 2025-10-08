@@ -65,6 +65,20 @@ app.post('/ventas', async (req, res) => {
         [total, usuario_id]
     )
     res.send(result)
+// endpoint login
+
+app.post('/login', async (req, res) => {
+    const { usuario , password} = req.body
+    let [filas] = await db.query(
+        "select * from usuarios where usuario = ? and password = ?",
+        [usuario, password]
+    )
+    if (filas.length == 0){
+        res.send({"mensaje": "Usuario o contraseña incorrecta"})
+    }
+    else {
+        res.send(filas)
+    }
 })
 
 app.listen(PORT, ()=>{
