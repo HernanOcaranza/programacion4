@@ -1,19 +1,23 @@
 <main id="ingProd">
-    <h1>INGRESAR PRODUCTO</h1>
-    <form action="" id="formIP">
-        <label for="" class="espacioForm">Nombre producto</label>
-        <input type="text" class="espacioForm">
-        <label for="" class="espacioForm">Categoria producto</label>
-        <select name="" id="" class="espacioForm">
-            <option value="" hidden selected>-- Selecciona una opción --</option>
-            <option value="Gaseosa">Gaseosa</option>
-            <option value="Cerveza">Cerveza</option>
-            <option value="Vino">Vino</option>
-            <option value="Vodka">Vodka</option>
-            <option value="Fernet">Fernet</option>
-        </select>
-        <label for="" class="espacioForm">Precio producto</label>
-        <input type="number" class="espacioForm">
-        <button>Agragar</button>
+    <h1>➕ Ingresar Nuevo Producto</h1>
+    <form id="formIP">
+        <label for="inputNombreProducto" class="espacioForm">📝 Nombre del Producto</label>
+        <input type="text" name="nombre" class="espacioForm" id="inputNombreProducto" placeholder="Ej: Cerveza Quilmes">
+        
+        <label for="inputDescripcionProducto" class="espacioForm">📄 Descripción</label>
+        <input type="text" name="descripcion" class="espacioForm" id="inputDescripcionProducto" placeholder="Descripción del producto">
+        
+        <label for="inputPrecioProducto" class="espacioForm">💰 Precio</label>
+        <input type="number" name="precio" class="espacioForm" id="inputPrecioProducto" placeholder="0.00" step="0.01">
+        
+        <label for="inputStockProducto" class="espacioForm">📦 Stock Inicial</label>
+        <input type="number" name="stock" class="espacioForm" id="inputStockProducto" placeholder="0">
+        
+        <button id="botonAgregarProducto">✅ Agregar Producto</button>
     </form>
 </main>
+
+
+<script defer>
+    
+</script>
