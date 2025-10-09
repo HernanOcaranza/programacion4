@@ -1,4 +1,5 @@
-import { login, agregarProducto } from "./request.js"
+// js/main.js - Navegación principal y login
+import { login } from "./api.js"
 
 let formLogin = document.getElementById("formLogin")
 let inputSubmit = document.getElementById("inputSubmit")
@@ -57,6 +58,9 @@ function cargarMainDesdeArchivo(archivo) {
         const mainExistente = document.querySelector("main");
         if (mainExistente) mainExistente.remove();
         document.body.appendChild(nuevoMain);
+        
+        // Cargar el módulo específico de la página
+        cargarModuloPagina(archivo);
       }
     })
     .catch(err => {
@@ -64,14 +68,36 @@ function cargarMainDesdeArchivo(archivo) {
     });
 }
 
-// Ventas
+// Función para cargar el módulo específico de cada página
+function cargarModuloPagina(archivo) {
+  switch(archivo) {
+    case 'ingresarProducto':
+      import('./pages/productos.js');
+      break;
+    case 'productos':
+      import('./pages/productos.js');
+      break;
+    case 'nuevaVenta':
+      import('./pages/ventas.js');
+      break;
+    case 'apertura':
+    case 'cierre':
+    case 'movimientos':
+      import('./pages/caja.js');
+      break;
+    default:
+      // Para páginas que no necesitan JavaScript específico
+      break;
+  }
+}
+
+// Event listeners para navegación
 document.getElementById("nuevaVenta")
   .addEventListener("click", () => cargarMainDesdeArchivo("nuevaVenta"));
 
 document.getElementById("historial")
   .addEventListener("click", () => cargarMainDesdeArchivo("historial"));
 
-// Stock
 document.getElementById("productos")
   .addEventListener("click", () => cargarMainDesdeArchivo("productos"));
 
@@ -81,7 +107,6 @@ document.getElementById("ingresarProducto")
 document.getElementById("reportesStock")
   .addEventListener("click", () => cargarMainDesdeArchivo("reportesStock"));
 
-// Caja
 document.getElementById("apertura")
   .addEventListener("click", () => cargarMainDesdeArchivo("apertura"));
 

@@ -1,27 +1,20 @@
 <main id="listaProd">
-    <h1>LISTA PRODUCTOS</h1>
+    <h1>📦 Lista de Productos</h1>
+    <button id="btnCargarProductos">🔄 Cargar Productos</button>
+    <div id="mensajeProductos"></div>
     <table id="tablaProd">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Nombre</th>
-                <th>Categoria</th>
+                <th>Descripción</th>
                 <th>Precio</th>
                 <th>Stock</th>
+                <th>Creado</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>Quilmes</td>
-                <td>Cerveza</td>
-                <td>$2500</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>Vieja Mendoza</td>
-                <td>Vino</td>
-                <td>$4000</td>
-                <td>45</td>
-            </tr>
+        <tbody id="tbodyProductos">
+            <!-- Los productos se cargarán aquí dinámicamente -->
         </tbody>
     </table>
 </main>

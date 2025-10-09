@@ -1,3 +1,4 @@
+// js/api.js - Todas las llamadas al servidor
 export async function login(usuario, password){
     const res = await fetch("http://localhost:3000/login", {
     method: "POST",
