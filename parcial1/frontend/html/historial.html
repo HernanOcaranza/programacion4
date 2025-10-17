@@ -1,18 +1,20 @@
 <main id="pag-historial">
   <h1>📊 Historial de Ventas</h1>
 
-  <table> 
+  <div id="mensajeHistorial" style="margin-bottom:1rem"></div>
+  <table id="tablaHistorial"> 
     <thead>
       <tr>
-        <th>🍺 Bebida</th>
-        <th>🔢 Cantidad</th>
-        <th>📅 Fecha</th>
+        <th>ID</th>
+        <th>Total</th>
+        <th>Usuario</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
       </tr>
     </thead>
-    <tbody>
-      <tr><td>Cerveza</td><td>5</td><td>27/09/2025</td></tr>
-      <tr><td>Fernet con Coca</td><td>2</td><td>28/09/2025</td></tr>
+    <tbody id="tbodyHistorial">
+      <!-- ventas reales se cargarán aquí -->
     </tbody>
-  </table>  
+  </table>
 
 </main>   

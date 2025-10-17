@@ -48,8 +48,16 @@ body {
 }
 
 /* Estilos para el menú de navegación */
+header {
+    position: relative; /* permite usar z-index */
+    z-index: 10000;
+}
+
 #menu {
     display: none;
+    position: relative; /* contenedor posicional para los dropdowns */
+    z-index: 10001; /* por encima del resto del flujo */
+    overflow: visible; /* importante para que los elementos absolutos se muestren fuera */
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -76,6 +84,7 @@ body {
     font-weight: 500;
     transition: all 0.3s ease;
     border-right: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
 #menu li:hover {
@@ -91,7 +100,7 @@ body {
     left: 0;
     background: rgba(255, 255, 255, 0.98);
     min-width: 200px;
-    z-index: 1000;
+    z-index: 11000; /* mucho más alto para superar cualquier stacking context */
     border-radius: 0 0 10px 10px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -288,6 +297,22 @@ input[type="password"]:focus {
     max-width: 500px;
     background: rgba(255, 255, 255, 0.9);
 }
+
+/* Mejor estilo para selects en nueva venta */
+#pag-nuevaventa select,
+#itemsBody select,
+#itemsBody input[type="number"] {
+    width: 100%;
+    padding: 0.6rem;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+#itemsTable th, #itemsTable td { vertical-align: middle; }
+
+#btnAgregarItem { margin-top: 0.8rem; }
 
 /* Página de historial */
 #pag-historial {

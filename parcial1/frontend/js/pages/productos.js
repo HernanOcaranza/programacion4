@@ -10,21 +10,24 @@ async function handleAgregarProducto(){
 
     // Validar que todos los campos estén completos
     if (!nombre || !descripcion || !precio || !stock) {
-        console.log("Por favor completa todos los campos");
+        alert("Por favor completa todos los campos");
         return;
     }
 
     const res = await agregarProducto(nombre, descripcion, precio, stock);
-
-    if(res.status === 200){
-        console.log("Producto agregado exitosamente");
+    // respuesta esperada: objeto con insertId u objeto de error
+    if (res && (res.insertId || res.id)) {
         // Limpiar formulario
         document.getElementById("inputNombreProducto").value = "";
         document.getElementById("inputDescripcionProducto").value = "";
         document.getElementById("inputPrecioProducto").value = "";
         document.getElementById("inputStockProducto").value = "";
+        // opcional: recargar la lista de productos
+        if (document.getElementById('btnCargarProductos')) cargarProductos()
+    } else if (res && res.mensaje) {
+        alert('Error: ' + res.mensaje)
     } else {
-        console.log("ERROR al ingresar un producto:", res);
+        alert('Producto agregado')
     }
 }
 
@@ -54,6 +57,10 @@ async function cargarProductos() {
                     <td>$${producto.precio}</td>
                     <td>${producto.stock}</td>
                     <td>${new Date(producto.creado_en).toLocaleDateString()}</td>
+                    <td>
+                        <button class="btn-editar" data-id="${producto.id}" title="Editar">✏️</button>
+                        <button class="btn-borrar" data-id="${producto.id}" title="Eliminar">🗑️</button>
+                    </td>
                 `;
                 tbody.appendChild(row);
             });
@@ -66,11 +73,34 @@ async function cargarProductos() {
             mensajeDiv.style.color = "orange";
         }
     } catch (error) {
-        console.error("Error al cargar productos:", error);
         const mensajeDiv = document.getElementById("mensajeProductos");
         mensajeDiv.innerHTML = "Error al cargar productos";
         mensajeDiv.style.color = "red";
     }
+}
+
+// Handlers para editar/borrar
+import { actualizarProducto, borrarProducto } from "../api.js"
+
+async function handleEditarProducto(id){
+    // solicitar datos nuevos (simple y entendible):
+    const nombre = prompt('Nombre nuevo:')
+    if (nombre === null) return // cancel
+    const descripcion = prompt('Descripción nueva:')
+    if (descripcion === null) return
+    const precio = prompt('Precio:')
+    if (precio === null) return
+    const stock = prompt('Stock:')
+    if (stock === null) return
+
+    const res = await actualizarProducto(id, nombre, descripcion, parseFloat(precio), parseInt(stock))
+    cargarProductos()
+}
+
+async function handleBorrarProducto(id){
+    if (!confirm('¿Eliminar este producto?')) return
+    const res = await borrarProducto(id)
+    cargarProductos()
 }
 
 // Event delegation para manejar clicks en elementos que se cargan dinámicamente
@@ -84,6 +114,16 @@ document.addEventListener('click', (e) => {
         e.preventDefault();
         cargarProductos();
     }
+    
+    if (e.target.classList.contains('btn-editar')){
+        const id = e.target.dataset.id
+        handleEditarProducto(id)
+    }
+    
+    if (e.target.classList.contains('btn-borrar')){
+        const id = e.target.dataset.id
+        handleBorrarProducto(id)
+    }
 });
 
 // Cargar productos automáticamente cuando se accede a la página de productos
@@ -92,5 +132,3 @@ setTimeout(() => {
         cargarProductos();
     }
 }, 100);
-
-console.log("Módulo de productos cargado");

@@ -71,6 +71,9 @@ function cargarMainDesdeArchivo(archivo) {
 // Función para cargar el módulo específico de cada página
 function cargarModuloPagina(archivo) {
   switch(archivo) {
+    case 'historial':
+      import('./pages/ventas.js');
+      break;
     case 'ingresarProducto':
       import('./pages/productos.js');
       break;
