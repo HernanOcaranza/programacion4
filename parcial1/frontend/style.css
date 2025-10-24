@@ -443,3 +443,178 @@ button:hover {
     color: #0c5460;
     border: 1px solid #bee5eb;
 }
+
+/* ==================== ESTILOS ESPECÍFICOS PARA CAJA ==================== */
+
+/* Estilos para movimientos de caja */
+.entrada {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.salida {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* Estilos para reportes de stock */
+#tablareportdestock tbody tr:hover {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    transform: translateX(3px);
+}
+
+#tablareportdestock .salida {
+    color: #e74c3c;
+    font-weight: 700;
+    background: rgba(231, 76, 60, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+#tablareportdestock .entrada {
+    color: #f39c12;
+    font-weight: 600;
+    background: rgba(243, 156, 18, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* Estilos para el estado de caja */
+#estadoCaja {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Estilos para formularios de caja */
+#pag-apertura form,
+#pag-cierre form {
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Estilos para la tabla de movimientos */
+#movdecaja {
+    margin-top: 1rem;
+}
+
+#movdecaja tbody tr {
+    transition: all 0.3s ease;
+}
+
+#movdecaja tbody tr:hover {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    transform: translateX(5px);
+}
+
+/* Estilos para el resumen de caja */
+.resumen-caja {
+    border-left: 4px solid #3498db;
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Estilos para botones específicos de caja */
+#botonApertura {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+}
+
+#botonApertura:hover {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+}
+
+#botonCierre {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+#botonCierre:hover {
+    background: linear-gradient(135deg, #c0392b, #e74c3c);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+}
+
+
+/* Estilos para inputs de caja */
+#montoInicial,
+#cierreReal {
+    transition: all 0.3s ease;
+}
+
+#montoInicial:focus,
+#cierreReal:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Animaciones específicas */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Efecto de pulso para elementos importantes */
+#totalRecaudado {
+    animation: pulse 2s infinite;
+}
+
+/* Estilos para responsive en caja */
+@media (max-width: 768px) {
+    #pag-apertura,
+    #pag-cierre,
+    #movimientosdecaja {
+        padding: 1rem;
+    }
+    
+    
+    #movdecaja {
+        font-size: 0.9rem;
+    }
+    
+    #movdecaja th,
+    #movdecaja td {
+        padding: 0.5rem;
+    }
+}
+
+/* Estilos para estados de carga */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #3498db;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

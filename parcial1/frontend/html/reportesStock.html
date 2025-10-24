@@ -1,38 +1,32 @@
 <main id="reportesdestock">
-    <h1>📊 Reportes de Stock</h1>
+    <h1>Reportes de Stock</h1>
 
-    <table id="tablareportdestock">
-        <thead>
-            <tr>
-                <th>🏷️ Categoría</th>
-                <th>📦 Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>🥤 Gaseosa</td>
-                <td>25,000</td>
-            </tr>
-            <tr>
-                <td>🍷 Vino</td>
-                <td>50,000</td>
-            </tr>
-            <tr>
-                <td>🍸 Fernet</td>
-                <td>54,000</td>
-            </tr>
-            <tr>
-                <td>🍺 Cerveza</td>
-                <td>60,000</td>
-            </tr>
-            <tr>
-                <td>🥃 Vodka</td>
-                <td>47,000</td>
-            </tr>
-        </tbody>
-    </table>   
+    <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 0.5rem;">Productos con Stock Bajo</h3>
+        <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0.5rem 0 1rem 0;">
+            Se muestran los productos con stock ≤ 5 unidades. Los productos con stock ≤ 2 se marcan en rojo.
+        </p>
+        <table id="tablareportdestock" style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+            <thead>
+                <tr style="background: #f8f9fa;">
+                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #dee2e6; color: #495057;">ID</th>
+                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #dee2e6; color: #495057;">Producto</th>
+                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #dee2e6; color: #495057;">Descripción</th>
+                    <th style="padding: 1rem; text-align: center; border-bottom: 2px solid #dee2e6; color: #495057;">Stock</th>
+                    <th style="padding: 1rem; text-align: right; border-bottom: 2px solid #dee2e6; color: #495057;">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="5" style="text-align: center; padding: 2rem; color: #6c757d;">
+                        Cargando reporte de stock...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <div style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 15px; margin-top: 2rem;">
-        <p style="font-size: 1.3rem; font-weight: 700; color: #2c3e50; text-align: center;">📦 Total de Stock: 236,000</p>
+    <div class="resumen-caja" style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <p style="font-size: 1.3rem; font-weight: 700; color: #2c3e50; text-align: center;">Cargando resumen...</p>
     </div>
 </main>

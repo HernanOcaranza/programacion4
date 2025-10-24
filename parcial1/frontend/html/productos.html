@@ -1,21 +1,26 @@
 <main id="listaProd">
-    <h1>📦 Lista de Productos</h1>
-    <button id="btnCargarProductos">🔄 Cargar Productos</button>
+    <h1>Lista de Productos</h1>
     <div id="mensajeProductos"></div>
-    <table id="tablaProd">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th>Creado</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody id="tbodyProductos">
-            <!-- Los productos se cargarán aquí dinámicamente -->
-        </tbody>
-    </table>
+    <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <table id="tablaProd" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background: #f8f9fa;">
+                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #dee2e6; color: #495057;">ID</th>
+                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #dee2e6; color: #495057;">Nombre</th>
+                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #dee2e6; color: #495057;">Descripción</th>
+                    <th style="padding: 1rem; text-align: right; border-bottom: 2px solid #dee2e6; color: #495057;">Precio</th>
+                    <th style="padding: 1rem; text-align: right; border-bottom: 2px solid #dee2e6; color: #495057;">Stock</th>
+                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #dee2e6; color: #495057;">Creado</th>
+                    <th style="padding: 1rem; text-align: center; border-bottom: 2px solid #dee2e6; color: #495057;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyProductos">
+                <tr>
+                    <td colspan="7" style="text-align: center; padding: 2rem; color: #6c757d;">
+                        Cargando productos...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </main>

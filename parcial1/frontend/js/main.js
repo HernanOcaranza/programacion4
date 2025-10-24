@@ -59,7 +59,6 @@ function cargarMainDesdeArchivo(archivo) {
         if (mainExistente) mainExistente.remove();
         document.body.appendChild(nuevoMain);
         
-        // Cargar el módulo específico de la página
         cargarModuloPagina(archivo);
       }
     })
@@ -68,17 +67,30 @@ function cargarMainDesdeArchivo(archivo) {
     });
 }
 
-// Función para cargar el módulo específico de cada página
 function cargarModuloPagina(archivo) {
   switch(archivo) {
     case 'historial':
-      import('./pages/ventas.js');
+      import('./pages/ventas.js').then(() => {
+        setTimeout(() => {
+          if (document.getElementById('tbodyHistorial') && window.cargarHistorial) {
+            window.cargarHistorial();
+          }
+        }, 100);
+      });
       break;
     case 'ingresarProducto':
       import('./pages/productos.js');
       break;
     case 'productos':
-      import('./pages/productos.js');
+      import('./pages/productos.js').then(() => {
+        setTimeout(() => {
+          if (document.getElementById('tablaProd')) {
+            if (window.cargarProductos) {
+              window.cargarProductos();
+            }
+          }
+        }, 100);
+      });
       break;
     case 'nuevaVenta':
       import('./pages/ventas.js');
@@ -86,15 +98,38 @@ function cargarModuloPagina(archivo) {
     case 'apertura':
     case 'cierre':
     case 'movimientos':
-      import('./pages/caja.js');
+      import('./pages/caja.js').then(() => {
+        setTimeout(async () => {
+          if (window.verificarEstadoCaja) {
+            await window.verificarEstadoCaja();
+          }
+          
+          if (document.getElementById('movdecaja') && window.handleMovimientosCaja) {
+            await window.handleMovimientosCaja();
+          }
+          
+          if (document.getElementById('totalRecaudado') && window.cargarResumenCaja) {
+            await window.cargarResumenCaja();
+          }
+        }, 100);
+      });
+      break;
+    case 'reportesStock':
+      import('./pages/reportes.js').then(() => {
+        setTimeout(() => {
+          if (document.getElementById('tablareportdestock')) {
+            if (window.cargarReportesStock) {
+              window.cargarReportesStock();
+            }
+          }
+        }, 100);
+      });
       break;
     default:
-      // Para páginas que no necesitan JavaScript específico
       break;
   }
 }
 
-// Event listeners para navegación
 document.getElementById("nuevaVenta")
   .addEventListener("click", () => cargarMainDesdeArchivo("nuevaVenta"));
 

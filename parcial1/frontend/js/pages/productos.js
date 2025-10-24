@@ -15,19 +15,18 @@ async function handleAgregarProducto(){
     }
 
     const res = await agregarProducto(nombre, descripcion, precio, stock);
-    // respuesta esperada: objeto con insertId u objeto de error
     if (res && (res.insertId || res.id)) {
+        alert('Producto agregado exitosamente');
         // Limpiar formulario
         document.getElementById("inputNombreProducto").value = "";
         document.getElementById("inputDescripcionProducto").value = "";
         document.getElementById("inputPrecioProducto").value = "";
         document.getElementById("inputStockProducto").value = "";
-        // opcional: recargar la lista de productos
-        if (document.getElementById('btnCargarProductos')) cargarProductos()
+        if (document.getElementById('tablaProd')) cargarProductos()
     } else if (res && res.mensaje) {
-        alert('Error: ' + res.mensaje)
+        alert(`Error: ${res.mensaje}`)
     } else {
-        alert('Producto agregado')
+        alert('Producto agregado exitosamente')
     }
 }
 
@@ -79,13 +78,11 @@ async function cargarProductos() {
     }
 }
 
-// Handlers para editar/borrar
 import { actualizarProducto, borrarProducto } from "../api.js"
 
 async function handleEditarProducto(id){
-    // solicitar datos nuevos (simple y entendible):
     const nombre = prompt('Nombre nuevo:')
-    if (nombre === null) return // cancel
+    if (nombre === null) return
     const descripcion = prompt('Descripción nueva:')
     if (descripcion === null) return
     const precio = prompt('Precio:')
@@ -93,27 +90,43 @@ async function handleEditarProducto(id){
     const stock = prompt('Stock:')
     if (stock === null) return
 
-    const res = await actualizarProducto(id, nombre, descripcion, parseFloat(precio), parseInt(stock))
-    cargarProductos()
+    try {
+        const res = await actualizarProducto(id, nombre, descripcion, parseFloat(precio), parseInt(stock))
+        if (res && res.mensaje) {
+            alert(`Error: ${res.mensaje}`)
+        } else {
+            alert('Producto actualizado exitosamente')
+        }
+        cargarProductos()
+    } catch (error) {
+        console.error('Error al actualizar producto:', error)
+        alert('Error al actualizar el producto')
+    }
 }
 
 async function handleBorrarProducto(id){
     if (!confirm('¿Eliminar este producto?')) return
-    const res = await borrarProducto(id)
-    cargarProductos()
+    
+    try {
+        const res = await borrarProducto(id)
+        if (res && res.mensaje) {
+            alert(`Error: ${res.mensaje}`)
+        } else {
+            alert('Producto eliminado exitosamente')
+        }
+        cargarProductos()
+    } catch (error) {
+        console.error('Error al eliminar producto:', error)
+        alert('Error al eliminar el producto')
+    }
 }
 
-// Event delegation para manejar clicks en elementos que se cargan dinámicamente
 document.addEventListener('click', (e) => {
     if (e.target.id === 'botonAgregarProducto') {
         e.preventDefault();
         handleAgregarProducto();
     }
     
-    if (e.target.id === 'btnCargarProductos') {
-        e.preventDefault();
-        cargarProductos();
-    }
     
     if (e.target.classList.contains('btn-editar')){
         const id = e.target.dataset.id
@@ -126,9 +139,12 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// Hacer la función disponible globalmente
+window.cargarProductos = cargarProductos;
+
 // Cargar productos automáticamente cuando se accede a la página de productos
 setTimeout(() => {
-    if (document.getElementById("btnCargarProductos")) {
+    if (document.getElementById("tablaProd")) {
         cargarProductos();
     }
 }, 100);

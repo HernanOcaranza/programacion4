@@ -1,20 +1,28 @@
 <main id="pag-historial">
-  <h1>📊 Historial de Ventas</h1>
+  <h1>Historial de Ventas</h1>
 
   <div id="mensajeHistorial" style="margin-bottom:1rem"></div>
-  <table id="tablaHistorial"> 
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Total</th>
-        <th>Usuario</th>
-        <th>Fecha</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody id="tbodyHistorial">
-      <!-- ventas reales se cargarán aquí -->
-    </tbody>
-  </table>
+  
+  <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 0.5rem;">Lista de Ventas</h3>
+    <table id="tablaHistorial" style="width: 100%; border-collapse: collapse; margin-top: 1rem;"> 
+      <thead>
+        <tr style="background: #f8f9fa;">
+          <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #dee2e6; color: #495057;">ID</th>
+          <th style="padding: 1rem; text-align: right; border-bottom: 2px solid #dee2e6; color: #495057;">Total</th>
+          <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #dee2e6; color: #495057;">Usuario</th>
+          <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #dee2e6; color: #495057;">Fecha</th>
+          <th style="padding: 1rem; text-align: center; border-bottom: 2px solid #dee2e6; color: #495057;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyHistorial">
+        <tr>
+          <td colspan="5" style="text-align: center; padding: 2rem; color: #6c757d;">
+            Cargando ventas...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 </main>   

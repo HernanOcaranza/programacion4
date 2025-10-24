@@ -1,33 +1,37 @@
 <main id="movimientosdecaja">
-    <h1>📊 Movimientos de Caja</h1>
-    <table id="movdecaja">
-        <thead>
-            <tr>
-                <th>📅 Fecha</th>
-                <th>📝 Descripción</th>
-                <th>🏷️ Tipo</th>
-                <th>💰 Monto</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>01-03-25</td>
-                <td>Venta</td>
-                <td>Ingreso</td>
-                <td>$6,500</td>
-            </tr>
-            <tr>
-                <td>03-03-25</td>
-                <td>Pago a proveedor</td>
-                <td>Egreso</td>
-                <td>$5,800</td>
-            </tr>
-        </tbody>
-    </table>
+    <h1>Movimientos de Caja</h1>
     
-    <div style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 15px; margin-top: 2rem;">
-        <p style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #27ae60; font-weight: 600;">📈 Total de Ingresos: $6,500</p>
-        <p style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #e74c3c; font-weight: 600;">📉 Total de Egresos: $5,800</p>
-        <p style="font-size: 1.2rem; font-weight: 700; color: #2c3e50;">💰 Saldo: $700</p>
+    <!-- Estado de la caja -->
+    <div id="estadoCaja" style="margin-bottom: 2rem;"></div>
+    
+    
+    <!-- Tabla de movimientos -->
+    <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 0.5rem;">Historial de Movimientos</h3>
+        <table id="movdecaja" style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+            <thead>
+                <tr style="background: #f8f9fa;">
+                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #dee2e6; color: #495057;">Fecha</th>
+                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #dee2e6; color: #495057;">Descripción</th>
+                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #dee2e6; color: #495057;">Tipo</th>
+                    <th style="padding: 1rem; text-align: right; border-bottom: 2px solid #dee2e6; color: #495057;">Monto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4" style="text-align: center; padding: 2rem; color: #6c757d;">
+                        Cargando movimientos...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Resumen de caja -->
+    <div class="resumen-caja" style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 0.5rem;">Resumen de Caja</h3>
+        <p style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #27ae60; font-weight: 600;">Total de Ingresos: $0.00</p>
+        <p style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #e74c3c; font-weight: 600;">Total de Egresos: $0.00</p>
+        <p style="font-size: 1.2rem; font-weight: 700; color: #2c3e50;">Saldo Esperado: $0.00</p>
     </div>
 </main>

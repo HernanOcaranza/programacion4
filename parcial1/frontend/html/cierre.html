@@ -1,8 +1,54 @@
 <main id="pag-cierre">
-  <h1>🔒 Cierre de Caja</h1>
-  <div style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
-    <p style="font-size: 1.2rem; font-weight: 600; color: #2c3e50;">💰 Total recaudado: $50.000</p>
+  <h1>Cierre de Caja</h1>
+  
+  <!-- Estado de la caja -->
+  <div id="estadoCaja" style="margin-bottom: 2rem;"></div>
+  
+  <!-- Resumen de la caja -->
+  <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 0.5rem;">Resumen de Caja</h3>
+    <div id="totalRecaudado" style="font-size: 1.5rem; font-weight: 700; color: #27ae60; margin: 1rem 0;">
+      Saldo esperado: $0.00
+    </div>
+    <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">
+      Este es el saldo que debería haber en la caja según los movimientos registrados.
+    </p>
   </div>
-  <button type="button" id="botonCierre">🔒 Cerrar Caja</button>
+  
+  <!-- Formulario de cierre -->
+  <form style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <div style="margin-bottom: 1.5rem;">
+      <label for="cierreReal" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #2c3e50;">
+        Monto real contado en la caja:
+      </label>
+      <input 
+        type="number" 
+        id="cierreReal" 
+        name="cierreReal" 
+        placeholder="0.00" 
+        step="0.01" 
+        min="0"
+        style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1.1rem;"
+        required
+      >
+    </div>
+    
+    <button 
+      type="button" 
+      id="botonCierre"
+      style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;"
+      onmouseover="this.style.transform='translateY(-2px)'"
+      onmouseout="this.style.transform='translateY(0)'"
+    >
+      Cerrar Caja
+    </button>
+  </form>
+  
+  <div style="margin-top: 2rem; padding: 1rem; background: rgba(231, 76, 60, 0.1); border-radius: 8px; border-left: 4px solid #e74c3c;">
+    <p style="margin: 0; color: #2c3e50; font-size: 0.9rem;">
+      <strong>Importante:</strong> Al cerrar la caja, se comparará el monto real contado con el saldo esperado. 
+      Si hay diferencias, se mostrarán en el resumen del cierre.
+    </p>
+  </div>
 </main>
     

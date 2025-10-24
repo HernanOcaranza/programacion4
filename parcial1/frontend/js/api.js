@@ -59,14 +59,6 @@ export async function getVentas(){
   return res.json()
 }
 
-export async function agregarVenta(total, usuario_id){
-  const res = await fetch("http://localhost:3000/ventas", {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ total, usuario_id })
-  })
-  return res.json()
-}
 
 // crear venta completa (transaccional) con items
 export async function agregarVentaCompleta(usuario_id, items){
@@ -78,20 +70,6 @@ export async function agregarVentaCompleta(usuario_id, items){
   return res.json()
 }
 
-// detalle_venta
-export async function agregarDetalleVenta(venta_id, producto_id, cantidad, precio_unitario){
-  const res = await fetch("http://localhost:3000/detalle_venta", {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ venta_id, producto_id, cantidad, precio_unitario })
-  })
-  return res.json()
-}
-
-export async function getDetalleVenta(){
-  const res = await fetch('http://localhost:3000/detalle_venta')
-  return res.json()
-}
 
 // obtener detalle de una venta específica
 export async function getDetalleVentaPorVenta(id_venta){
@@ -100,54 +78,50 @@ export async function getDetalleVentaPorVenta(id_venta){
 }
 
 // --- Caja y movimientos ---
-export async function getCajas(){
-  const res = await fetch('http://localhost:3000/caja')
-  return res.json()
-}
 
-export async function abrirCaja(fecha, apertura, cierre, usuario_id){
-  const res = await fetch('http://localhost:3000/caja', {
+// Abrir caja
+export async function abrirCaja(apertura, usuario_id){
+  const res = await fetch('http://localhost:3000/caja/abrir', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ fecha, apertura, cierre, usuario_id })
+    body: JSON.stringify({ apertura, usuario_id })
   })
   return res.json()
 }
 
-export async function cerrarCaja(id, fecha, apertura, cierre, usuario_id){
-  const res = await fetch(`http://localhost:3000/caja/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ fecha, apertura, cierre, usuario_id })
-  })
+// Obtener caja abierta
+export async function getCajaAbierta(){
+  const res = await fetch('http://localhost:3000/caja/abierta')
   return res.json()
 }
 
+
+// Obtener movimientos de la caja abierta
 export async function getMovimientosCaja(){
-  const res = await fetch('http://localhost:3000/movimientos_caja')
+  const res = await fetch('http://localhost:3000/caja/movimientos')
   return res.json()
 }
 
-export async function agregarMovimientoCaja(caja_id, descripcion, monto, tipo){
-  const res = await fetch('http://localhost:3000/movimientos_caja', {
+// Cerrar caja
+export async function cerrarCaja(cierre_real){
+  const res = await fetch('http://localhost:3000/caja/cerrar', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ caja_id, descripcion, monto, tipo })
+    body: JSON.stringify({ cierre_real })
   })
   return res.json()
 }
 
-// --- Usuarios (básico) ---
-export async function getUsuarios(){
-  const res = await fetch('http://localhost:3000/usuarios')
+
+// Obtener resumen de caja abierta
+export async function getResumenCaja(){
+  const res = await fetch('http://localhost:3000/caja/resumen')
   return res.json()
 }
 
-export async function agregarUsuario(nombre, usuario, password, rol){
-  const res = await fetch('http://localhost:3000/usuarios', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ nombre, usuario, password, rol })
-  })
+// --- Reportes ---
+export async function getReportesStock(limite = 20){
+  const res = await fetch(`http://localhost:3000/reportes/stock?limite=${limite}`)
   return res.json()
 }
+
